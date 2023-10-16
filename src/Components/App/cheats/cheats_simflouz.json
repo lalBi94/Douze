@@ -1,0 +1,34 @@
+{
+    "mother_lode": {
+        "title": "Recuperer 50k de Simflouz",
+        "code": "motherlode",
+        "desc": "Pas de parametre, juste ecrire la commande."
+    }, 
+    
+    "rose_bud": {
+        "title": "Recuperer 10k de Simflouz",
+        "code": "rosebud",
+        "desc": "Pas de parametre, juste ecrire la commande."
+    },
+
+    "money": {
+        "title": "Recuperer n de Simflouz",
+        "code": "money",
+        "args_i": ["[montant]"],
+        "desc": "[montant]: Nombre de Simflouz souhaité"
+    },
+
+    "autopay": {
+        "title": "Ne plus avoir de facture",
+        "code": "households.autopay_bills",
+        "desc": "Pas de parametre, juste ecrire la commande."
+    },
+
+    "freehouse": {
+        "title": "Avoir toutes les maisons gratuite",
+        "code": "FreeRealEstate",
+        "args_r": ["on", "off"],
+        "args_r_v": ["on", "off"],
+        "desc": "[on]: Activer, [off]: desactiver"
+    }
+}
