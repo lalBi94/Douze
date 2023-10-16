@@ -27,13 +27,14 @@ export default function CheatMesh({title, code, desc}) {
             command += ` ${all.querySelectorAll("input")[1].value}`
         }
 
-        console.info(command)
         await clipboardCopy(command)
         codeRef.current.style.background = "#21b96b"
 
         await setTimeout(() => {
             codeRef.current.style.background = "#151515"
         }, 500)
+
+        console.log(command)
     }
     
     return (
