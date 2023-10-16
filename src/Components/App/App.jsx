@@ -11,12 +11,13 @@ export default function App() {
     <>
       <Layout>
             <Routes>
-				<Route path="*" element={<Simflouz data={cheats_simflouz} />} />
+				        <Route path="*" element={<Simflouz data={cheats_simflouz} />} />
+                <Route path="/Douze/" element={<Simflouz data={cheats_simflouz} />} />
                 <Route path="/Douze/Simflouz" element={<Simflouz data={cheats_simflouz} />} />
                 <Route path="/Douze/Personnage" element={<Simflouz data={cheats_personnage} />} />
-				<Route path="/Douze/Construction" element={<Simflouz data={cheats_construction} />} />
+				        <Route path="/Douze/Construction" element={<Simflouz data={cheats_construction} />} />
             </Routes>
       </Layout>
     </>
   );
-}
+}                   
