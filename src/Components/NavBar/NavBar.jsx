@@ -1,5 +1,4 @@
 import "./NavBar.scss"
-import { Link } from "react-router-dom"
 import logo from "../../Assets/img/logo.png"
 
 export default function NavBar() {
@@ -8,17 +7,17 @@ export default function NavBar() {
             <ul id="links-container">
                 <img src={logo} className="logo" alt="logo sims" />
 
-                <Link className="link" to="/Douze/Simflouz" >
+                <a className="link" href="/Douze/Simflouz" >
                     Simflouz
-                </Link>
+                </a>
 
-                <Link className="link" to="/Douze/Personnage" >
+                <a className="link" href="/Douze/Personnage" >
                     Personnage
-                </Link>
+                </a>
 
-                <Link className="link" to="/Douze/Construction" >
+                <a className="link" href="/Douze/Construction" >
                     Construction
-                </Link>
+                </a>
             </ul>
         </nav>
     )
