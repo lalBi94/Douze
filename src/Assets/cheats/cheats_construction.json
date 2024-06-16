@@ -1,11 +1,10 @@
 {
-    "supperposition": {
+    "c_supperposition": {
         "title": "Supperposer deux objets",
         "code": "bb.moveobjects on",
         "desc": "Pas de parametre, juste ecrire la commande."
     },
-
-    "unlck_hidden_content": {
+    "c_unlck_hidden_content": {
         "title": "Debloquer des objets speciaux dans la boutique",
         "code": "bb.showhiddenobjects",
         "desc": "Pas de parametre, juste ecrire la commande."
