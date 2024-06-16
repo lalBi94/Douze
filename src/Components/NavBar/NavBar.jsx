@@ -8,19 +8,19 @@ export default function NavBar() {
             <ul id="links-container">
                 <img src={logo} className="logo" alt="logo sims" />
 
-                <Link className="link" to="/Simflouz">
+                <Link className="link" to="/#/Simflouz">
                     Simflouz
                 </Link>
 
-                <Link className="link" to="/Personnage">
+                <Link className="link" to="/#/Personnage">
                     Personnage
                 </Link>
 
-                <Link className="link" to="/Construction">
+                <Link className="link" to="/#/Construction">
                     Construction
                 </Link>
 
-                <Link className="link" to="/Like">
+                <Link className="link" to="/#/Like">
                     💙
                 </Link>
             </ul>
