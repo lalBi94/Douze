@@ -2,19 +2,35 @@
 
 .pg-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
+    gap: 20px;
     background: $darkdarkmode;
     border-radius: 10px;
     margin: 2%;
+
+    div {
+        .btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: $green2;
+        }
+    }
 
     .cheat-container {
         display: flex;
         flex-direction: column;
         color: white;
 
-        .title {}
+        .title {
+        }
 
         .code {
             display: flex;
@@ -40,7 +56,8 @@
                 }
             }
         }
-        
-        .desc {}
+
+        .desc {
+        }
     }
 }
