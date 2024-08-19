@@ -1,0 +1,35 @@
+{
+  "name": "Douze",
+  "version": "1.0.0",
+  "description": "Application .exe du site Douze",
+  "main": "main.js",
+  "scripts": {
+    "build:win": "electron-builder --win"
+  },
+  "keywords": [],
+  "author": "Bilal Boudjemline",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^31.4.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "productName": "Douze",
+    "appId": "com.Douze.app",
+    "win": {
+      "target": "nsis",
+      "icon": "build/favico.ico",
+      "artifactName": "Douze.setup.${version}.${ext}"
+    },
+    "files": [
+      "main.js",
+      "build/**"
+    ],
+    "directories": {
+      "buildResources": "build"
+    }
+  },
+  "dependencies": {
+    "path": "^0.12.7"
+  }
+}

@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import "./CheatMesh.scss";
 import clipboardCopy from "clipboard-copy";
 
@@ -7,6 +7,17 @@ import clipboardCopy from "clipboard-copy";
  */
 export default function CheatMesh({ title, code, desc, meta }) {
     const codeRef = useRef(null);
+    const [emoji, setEmoji] = useState("💚");
+
+    useEffect(() => {
+        const storage = JSON.parse(localStorage.getItem("douze.like"));
+
+        if (storage && storage.includes(meta)) {
+            setEmoji("❤️");
+        } else {
+            setEmoji("💚");
+        }
+    }, []);
 
     const handleCopy = async () => {
         let all = codeRef.current;
@@ -38,16 +49,19 @@ export default function CheatMesh({ title, code, desc, meta }) {
     };
 
     const handleLike = () => {
-        if (!localStorage.getItem("like")) {
-            localStorage.setItem("like", JSON.stringify([meta]));
+        if (!localStorage.getItem("douze.like")) {
+            localStorage.setItem("douze.like", JSON.stringify([meta]));
         } else {
-            const data = JSON.parse(localStorage.getItem("like"));
+            const data = JSON.parse(localStorage.getItem("douze.like"));
 
             if (!data.includes(meta)) {
-                localStorage.setItem("like", JSON.stringify([...data, meta]));
+                localStorage.setItem(
+                    "douze.like",
+                    JSON.stringify([...data, meta])
+                );
             } else {
                 const updatedData = data.filter((item) => item !== meta);
-                localStorage.setItem("like", JSON.stringify(updatedData));
+                localStorage.setItem("douze.like", JSON.stringify(updatedData));
             }
         }
 
@@ -57,17 +71,17 @@ export default function CheatMesh({ title, code, desc, meta }) {
     return (
         <div className="pg-container">
             <div className="cheat-container">
-                <h2 className="title">{title}</h2>
+                <h2 className="title">
+                    <button className="btn" onClick={handleLike}>
+                        {emoji ? emoji : ""}
+                    </button>{" "}
+                    &nbsp;
+                    {title}
+                </h2>
                 <div ref={codeRef} className="code" onClick={handleCopy}>
                     {code}
                 </div>
                 <p className="desc">{desc}</p>
-            </div>
-
-            <div>
-                <button className="btn" onClick={handleLike}>
-                    💙
-                </button>
             </div>
         </div>
     );

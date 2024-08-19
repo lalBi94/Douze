@@ -6,7 +6,13 @@ export default function NavBar() {
     return (
         <nav id="nav-container">
             <ul id="links-container">
-                <img src={logo} className="logo" alt="logo sims" />
+                <img
+                    src={
+                        "https://upload.wikimedia.org/wikipedia/fr/thumb/3/34/Les_Sims_4_Logo.png/1200px-Les_Sims_4_Logo.png"
+                    }
+                    className="logo"
+                    alt="logo sims"
+                />
 
                 <Link className="link" to="/Simflouz">
                     Simflouz
