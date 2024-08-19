@@ -9,7 +9,7 @@ export default function Like() {
     const [components, setComponents] = useState([]);
 
     useEffect(() => {
-        const data = JSON.parse(localStorage.getItem("like"));
+        const data = JSON.parse(localStorage.getItem("douze.like"));
 
         if (!data) {
             return;
