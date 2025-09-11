@@ -68,7 +68,9 @@
             "Dressage (Les Sims 4 : Chiens et chats)",
             "Vétérinaire (Les Sims 4 : Chiens et chats)",
             "Composition florale (Les Sims 4 : Saisons)",
-            "Patinage (Les Sims 4 : Saisons)"
+            "Patinage (Les Sims 4 : Saisons)",
+            "Escalade",
+	    "Recherche-Debat"
         ],
         "args_r_v": [
             "Major_Comedy",
@@ -113,7 +115,9 @@
             "skill_Dog",
             "Major_Vet",
             "AdultMajor_FlowerArranging",
-            "Hidden_Skating"
+            "Hidden_Skating",
+	    "Skill_AdultMajor_RockClimbing",
+	    "Major_ResearchDebate"
         ],
         "args_i": [
             "[niveau]"
