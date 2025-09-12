@@ -1,6 +1,10 @@
 import { useRef, useEffect, useState } from "react";
 import "./CheatMesh.scss";
 import clipboardCopy from "clipboard-copy";
+import { ws, initWS } from './ws';
+if(!ws.current) {
+    const socket = initWS();
+}
 
 /**
  * @param {{title:string,code:HTMLElement,desc:string}} title The title
@@ -10,6 +14,10 @@ export default function CheatMesh({ title, code, desc, meta }) {
     const [emoji, setEmoji] = useState("💚");
 
     useEffect(() => {
+        refresh();
+    }, []);
+
+    const refresh = () => {
         const storage = JSON.parse(localStorage.getItem("douze.like"));
 
         if (storage && storage.includes(meta)) {
@@ -17,11 +25,10 @@ export default function CheatMesh({ title, code, desc, meta }) {
         } else {
             setEmoji("💚");
         }
-    }, []);
+    }
 
-    const handleCopy = async () => {
+    const handleGetCommand = () => {
         let all = codeRef.current;
-
         let command = all.querySelector("code").innerText;
 
         if (all.querySelectorAll("select").length === 1) {
@@ -38,6 +45,12 @@ export default function CheatMesh({ title, code, desc, meta }) {
             command += ` ${all.querySelectorAll("input")[1].value}`;
         }
 
+        return command;
+    }
+
+    const handleCopy = async () => {
+        const command = handleGetCommand();
+
         await clipboardCopy(command);
         codeRef.current.style.background = "#21b96b";
 
@@ -51,6 +64,7 @@ export default function CheatMesh({ title, code, desc, meta }) {
     const handleLike = () => {
         if (!localStorage.getItem("douze.like")) {
             localStorage.setItem("douze.like", JSON.stringify([meta]));
+            refresh();
         } else {
             const data = JSON.parse(localStorage.getItem("douze.like"));
 
@@ -63,10 +77,20 @@ export default function CheatMesh({ title, code, desc, meta }) {
                 const updatedData = data.filter((item) => item !== meta);
                 localStorage.setItem("douze.like", JSON.stringify(updatedData));
             }
+
+            refresh()
         }
 
-        location.reload();
+        //location.reload();
     };
+
+    const handleSendCommandToGame = () => {
+        const command = handleGetCommand();
+
+        if (ws.current && ws.current.readyState === WebSocket.OPEN && command) {
+            ws.current.send(command);
+        }
+    }
 
     return (
         <div className="pg-container">
@@ -75,6 +99,10 @@ export default function CheatMesh({ title, code, desc, meta }) {
                     <button className="btn" onClick={handleLike}>
                         {emoji ? emoji : ""}
                     </button>{" "}
+
+                    <button className="btn" onClick={handleSendCommandToGame}>
+                        ⚡
+                    </button>
                     &nbsp;
                     {title}
                 </h2>
